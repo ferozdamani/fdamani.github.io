@@ -1,4 +1,4 @@
-# react_project
+# Work in progress
 Movies/Cheap Flights Project, currently work pending
 
 If you would like to play around with the Webapp:
