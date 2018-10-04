@@ -6,8 +6,9 @@ var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
 var APP_DIR = path.resolve(__dirname, 'src/client/app');
 
 var config = {
-  devtool: false,
+  mode: 'development',
   entry: APP_DIR + '/index.jsx',
+  context: APP_DIR,
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
@@ -16,15 +17,20 @@ var config = {
     rules : [
       {
         test : /\.jsx$/,
-        exclude: /node_modules/,
+        exclude: /\/node_modules/,
         include : APP_DIR,
-        use : 'babel-loader'
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env', 'react']
+          }
+        }
       }, {
       test: /\.scss$/,
         use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
+          {loader:'style-loader'},
+          {loader:'css-loader'},
+          {loader:'sass-loader'}
         ]
       }
     ]
@@ -34,7 +40,7 @@ var config = {
       test: /\.js($|\?)/i,
       sourceMap: true,
       parallel: true,
-      exclude: /node_modules/,
+      exclude: /\/node_modules/,
       uglifyOptions: {
         ecma: 8,
         warnings: false
