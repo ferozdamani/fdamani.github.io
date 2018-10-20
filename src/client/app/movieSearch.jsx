@@ -13,7 +13,7 @@ export class MovieBox extends React.Component {
 		return (
 			<div className="movieContainer">
 				<h1>Movie Search</h1>
-				<p>Type in you movie name</p>
+				<p>Type in a movie name</p>
 				<label htmlFor="movieNameBox"> Search
 					<input type="text" id="movieTextBox" className="movieTextBox"/>
 					<button className="movieSearchBtn" id="movieSearchBtn">Search</button>
