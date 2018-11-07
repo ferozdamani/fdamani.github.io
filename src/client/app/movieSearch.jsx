@@ -1,6 +1,5 @@
 import React from 'react';
 import {render} from 'react-dom';
-import './styles/movieSearch.scss';
 
 export class MovieBox extends React.Component {
 	constructor(props) {

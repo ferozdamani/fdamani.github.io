@@ -1,17 +1,23 @@
 var webpack = require('webpack');
 var path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
 var APP_DIR = path.resolve(__dirname, 'src/client/app');
+var DIST_FILE = path.resolve(__dirname, 'src/client/app/index.html');
 
 var config = {
   mode: 'development',
-  entry: APP_DIR + '/index.jsx',
-  context: APP_DIR,
+  entry: {
+    test_app: APP_DIR + '/index.jsx',
+  },
+  // context: APP_DIR,
   output: {
     path: BUILD_DIR,
-    filename: 'bundle.js'
+    filename: '[name][hash].bundle.js'
   },
   module : {
     rules : [
@@ -28,7 +34,8 @@ var config = {
       }, {
       test: /\.scss$/,
         use: [
-          {loader:'style-loader'},
+          {loader: MiniCssExtractPlugin.loader},
+          // {loader:'style-loader'},
           {loader:'css-loader'},
           {loader:'sass-loader'}
         ]
@@ -36,6 +43,13 @@ var config = {
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'React App',
+      template: DIST_FILE,
+      filename: BUILD_DIR + '/index.html',
+      inject: 'body',
+      cache: false
+    }),
     new UglifyJsPlugin({
       test: /\.js($|\?)/i,
       sourceMap: true,
@@ -45,8 +59,18 @@ var config = {
         ecma: 8,
         warnings: false
       }
-    })
-  ]
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    }),
+    new CleanWebpackPlugin([BUILD_DIR])
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    },
+    mangleWasmImports: true
+  }
 };
 
 module.exports = config;

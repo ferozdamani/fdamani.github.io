@@ -6,7 +6,8 @@ import {
 	Link,
 	Switch,
 } from "react-router-dom";
-import './styles/index.scss';
+import '../assets/index.scss';
+import '../assets/movieSearch.scss';
 import {Header} from './header.jsx';
 import {Home} from './home.jsx';
 import {Bio} from './bio.jsx';
