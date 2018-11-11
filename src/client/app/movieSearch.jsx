@@ -1,5 +1,4 @@
 import React from 'react';
-import {render} from 'react-dom';
 
 export class MovieBox extends React.Component {
 	constructor(props) {

@@ -1,13 +1,14 @@
 var webpack = require('webpack');
 var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+var APP_PATH = path.resolve(__dirname, 'src/client');
 var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
 var APP_DIR = path.resolve(__dirname, 'src/client/app');
-var DIST_FILE = path.resolve(__dirname, 'src/client/app/index.html');
+var ENTRY_TEMPLATE = path.resolve(__dirname, 'src/client/app/index.html');
 
 var config = {
   mode: 'development',
@@ -25,12 +26,10 @@ var config = {
         test : /\.jsx$/,
         exclude: /\/node_modules/,
         include : APP_DIR,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env', 'react']
-          }
-        }
+        use: [
+          'babel-loader?cacheDirectory=true',
+          'eslint-loader'
+        ]
       }, {
       test: /\.scss$/,
         use: [
@@ -45,11 +44,12 @@ var config = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'React App',
-      template: DIST_FILE,
+      template: ENTRY_TEMPLATE,
       filename: BUILD_DIR + '/index.html',
       inject: 'body',
       cache: false
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new UglifyJsPlugin({
       test: /\.js($|\?)/i,
       sourceMap: true,
@@ -70,6 +70,13 @@ var config = {
       chunks: 'all'
     },
     mangleWasmImports: true
+  },
+  devServer: {
+    contentBase: BUILD_DIR,
+    compress: true,
+    port: 2000,
+    watchContentBase: true,
+    hot: true
   }
 };
 

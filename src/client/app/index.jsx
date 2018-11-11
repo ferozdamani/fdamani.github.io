@@ -5,7 +5,7 @@ import {
 	Route,
 	Link,
 	Switch,
-} from "react-router-dom";
+} from 'react-router-dom';
 import '../assets/index.scss';
 import '../assets/movieSearch.scss';
 import {Header} from './header.jsx';
@@ -18,13 +18,12 @@ import {Contact} from './contact.jsx';
 class Navigation extends React.Component {
 	render () {
 		return (
-
-				<nav className="navContainer">
-					<Link to="/home" className="navItem" href="#">Home</Link>
-					<Link to="/bio" className="navItem" href="#">About Me</Link>
-					<Link to="/movieBox" className="navItem" href="#">Movie Search</Link>
-					<Link to="/contact" className="navItem" href="#">Contact</Link>
-				</nav>
+			<nav className="navContainer">
+				<Link to="/home" className="navItem" href="#">Home</Link>
+				<Link to="/bio" className="navItem" href="#">About Me</Link>
+				<Link to="/movieBox" className="navItem" href="#">Movie Search</Link>
+				<Link to="/contact" className="navItem" href="#">Contact Me</Link>
+			</nav>
 		);
 	}
 }
@@ -61,6 +60,6 @@ class App extends React.Component {
 // =============================================
 
 render(
-  <App />,
-  document.getElementById('app')
+	<App />,
+	document.getElementById('app')
 );
