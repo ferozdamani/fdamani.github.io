@@ -7,7 +7,7 @@ export class Header extends React.Component {
 				<div className="logoContainer">
 					<span className="logoBox">FD</span>
 				</div>
-				<div className="nameContainer">Feroz Damani</div>
+				<div className="nameContainer"></div>
 				<div className="headerExtra">
 					<div className="socialMediaBox">
 						<a className="socialBox" href="#"><i className="fab fa-twitter"></i></a>

@@ -19,9 +19,9 @@ class Navigation extends React.Component {
 	render () {
 		return (
 			<nav className="navContainer">
-				<Link to="/home" className="navItem" href="#">Home</Link>
-				<Link to="/bio" className="navItem" href="#">About Me</Link>
-				<Link to="/movieBox" className="navItem" href="#">Movie Search</Link>
+				<Link to="/home" className="navItem" href="#"><i className="fas fa-home iconSpacer"></i>Home</Link>
+				<Link to="/bio" className="navItem" href="#"><i className="fas fa-user-tie iconSpacer"></i>About Me</Link>
+				<Link to="/movieBox" className="navItem" href="#"><i className="fas fa-film iconSpacer"></i>Movie Search</Link>
 				<Link to="/contact" className="navItem" href="#">Contact Me</Link>
 			</nav>
 		);

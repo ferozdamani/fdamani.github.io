@@ -27,8 +27,7 @@ var config = {
         exclude: /\/node_modules/,
         include : APP_DIR,
         use: [
-          'babel-loader?cacheDirectory=true',
-          'eslint-loader'
+          'babel-loader?cacheDirectory=true'
         ]
       }, {
       test: /\.scss$/,
@@ -73,6 +72,7 @@ var config = {
   },
   devServer: {
     contentBase: BUILD_DIR,
+    historyApiFallback: true,
     compress: true,
     port: 2000,
     watchContentBase: true,

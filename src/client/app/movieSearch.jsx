@@ -7,14 +7,19 @@ export class MovieBox extends React.Component {
 			movieSearchResults: []
 		};
 	}
+
+	movieLookUp = () => {
+		console.log('Hi there');
+	}
+
 	render () {
 		return (
 			<div className="movieContainer">
 				<h1>Movie Search</h1>
-				<p>Type in a movie name</p>
-				<label htmlFor="movieNameBox"> Search
-					<input type="text" id="movieTextBox" className="movieTextBox"/>
-					<button className="movieSearchBtn" id="movieSearchBtn">Search</button>
+				<h2>Search powered by - Unknown</h2>
+				<label htmlFor="movieNameBox">
+					<input type="text" id="movieTextBox" className="movieTextBox" placeholder="Movie, shows, artists..."/>
+					<button className="movieSearchBtn" id="movieSearchBtn" onClick={this.movieLookUp}><i className="fas fa-search"></i></button>
 				</label>
 			</div>
 		);
