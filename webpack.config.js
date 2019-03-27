@@ -13,9 +13,9 @@ var ENTRY_TEMPLATE = path.resolve(__dirname, 'src/client/app/index.html');
 var config = {
   mode: 'development',
   entry: {
-    test_app: APP_DIR + '/index.jsx',
+    movie_search: APP_DIR + '/index.jsx',
   },
-  // context: APP_DIR,
+  context: APP_DIR,
   output: {
     path: BUILD_DIR,
     filename: '[name][hash].bundle.js'
