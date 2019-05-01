@@ -6,7 +6,7 @@ Movies/Cheap Flights Project, its still a work in progress
 
 If you would like to play around with the Webapp:   
 
-* Fork the [App Repo]: (https://github.com/ferozdamani/react_project.git)
+* Fork the [App Repo]: (https://github.com/ferozdamani/movie-search.git)
 
 In the root folder:
 
